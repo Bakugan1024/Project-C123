@@ -14,8 +14,12 @@ function setup() {
  
 function draw() {
     background('#28EBC7');
+
+
+    textSize(difference);
+    fill('#25CA03');
+    text('Arian', 100, 30);
 }
- 
  
 function modelLoaded() {
     console.log('PoseNet Is Initialized!');
@@ -24,6 +28,15 @@ function modelLoaded() {
  
 function gotPoses(results) {
     if (results.length > 0) {
+        
         console.log(results);
+
+
+
+    leftWristX=results[0].pose.leftWrist.x;
+    rightWristX=results[0].pose.rightWrist.x;
+    difference=floor(leftWristX-rightWristX);
+
+
     }
 }
